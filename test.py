@@ -5,7 +5,6 @@ from tkinter.messagebox import showinfo
 
 
 class MyBtn(tk.Button):
-
     def __init__(self, master, x, y, num, *args, **kwargs):
         super(MyBtn, self).__init__(master, *args, **kwargs)
         self.x = x
