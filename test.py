@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-def hi():
-  print('Hi')
-hi()
-=======
+
 import tkinter as tk
 from random import shuffle
 from tkinter.messagebox import showinfo
@@ -163,4 +159,4 @@ class MineSvipper:
 
 if __name__ == '__main__':
     game = MineSvipper()
->>>>>>> 939bcc9 (version1.2 test.py)
+
