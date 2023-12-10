@@ -39,10 +39,6 @@ class MineSvipper:
         self.insert_mines()
         self.neighbor()
         self.all_cells = self.row * self.columns
-        for btn_row in self.buttons:
-            for btn in btn_row:
-                print(btn.number, end=' ') if btn.number != 'x' else None
-            print()
         self.window.mainloop()
 
     def reload(self):
