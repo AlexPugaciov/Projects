@@ -17,14 +17,14 @@ class MyBtn(tk.Button):
 
 
 class MineSvipper:
+
     window = tk.Tk()
     window.title('Minesweeper')
-    row: int = 5
-    columns: int = 5
-    mines: int = 5
 
-
-    def __init__(self):
+    def __init__(self, row:int=5, column:int=5, mines:int=5):
+        self.row = row
+        self.columns = column
+        self.mines = mines
         self.count: int = 1
         self.buttons_clic: list = list()
         self.buttons: list = list()
@@ -36,11 +36,14 @@ class MineSvipper:
         self.all_cells = self.row * self.columns
         self.window.mainloop()
 
-    def reload(self):
+    def restart(self):
+        [elem.destroy() for elem in self.window.winfo_children()]
+        self.__init__(self.row, self.columns, self.mines)
+
+    def apply_settings(self, row, col, bomb):
 
         [elem.destroy() for elem in self.window.winfo_children()]
-
-        self.__init__()
+        self.__init__(row, col, bomb)
 
     def start(self):
         for i in range(self.row + 2):
@@ -63,7 +66,7 @@ class MineSvipper:
         menubar = tk.Menu(self.window)
         self.window.config(menu=menubar)
         set_menu = tk.Menu(menubar, tearoff=0)
-        set_menu.add_command(label='Restart', command=self.reload)
+        set_menu.add_command(label='Restart', command=self.restart)
         set_menu.add_command(label='Config', command=self.settings)
         set_menu.add_command(label='Exit', command=self.window.destroy)
         menubar.add_cascade(label="File", menu=set_menu)
@@ -84,14 +87,8 @@ class MineSvipper:
         tk.Label(win_settings, text='Columns').grid(row=1, column=0)
         tk.Label(win_settings, text='Bombs').grid(row=2, column=0)
         tk.Button(win_settings, text='apply',
-                  command=lambda: self.apply_setings(entry_row.get(), entry_column.get(), entry_bomb.get())). \
+                  command=lambda: self.apply_settings(int(entry_row.get()), int(entry_column.get()), int(entry_bomb.get()))). \
             grid(row=3, column=0, columnspan=2)
-
-    def apply_setings(self, row, col, bomb):
-        MineSvipper.row = int(row)
-        MineSvipper.columns = int(col)
-        MineSvipper.mines = int(bomb)
-        self.reload()
 
     def right_click(self, event):
         btn = event.widget
