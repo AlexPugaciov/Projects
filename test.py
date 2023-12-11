@@ -16,7 +16,7 @@ class MyBtn(tk.Button):
         return f"{self.number}"
 
 
-class MineSvipper:
+class Minesweeper:
 
     window = tk.Tk()
     window.title('Minesweeper')
@@ -154,5 +154,5 @@ class MineSvipper:
 
 
 if __name__ == '__main__':
-    game = MineSvipper()
+    game = Minesweeper()
 
