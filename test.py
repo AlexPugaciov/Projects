@@ -40,7 +40,7 @@ class Minesweeper:
         [elem.destroy() for elem in self.window.winfo_children()]
         self.__init__(self.row, self.columns, self.mines)
 
-    def apply_settings(self, row, col, bomb):
+    def apply_settings(self, row:int, col:int, bomb:int):
 
         [elem.destroy() for elem in self.window.winfo_children()]
         self.__init__(row, col, bomb)
